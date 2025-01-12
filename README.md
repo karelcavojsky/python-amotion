@@ -39,7 +39,7 @@ asyncio.run(main())
 
 Properties:
 
-        device_name = "Atrea Device"        device name
+        device_name = "Amotion Device"        device name
         device_type = "aMotion"             device type
         board_type = "Unknown"              board type (aM-CL, aM-CE, aM-GB etc)
         production_number = "Unknown"       factory ident
@@ -56,7 +56,7 @@ This is a complete description to compose all relevant entity. You get somethink
 
 ```
 {'board_type': 'CL',
- 'brand': 'atrea.cz',
+ 'brand': 'amotion.eu',
  'control': {'fan_power_req': {'max': 100.0,
                                'min': 0.0,
                                'name': 'fan_power_req',
@@ -79,9 +79,9 @@ This is a complete description to compose all relevant entity. You get somethink
                                         'AUTO',
                                         'VENTILATION',
                                         'NIGHT_PRECOOLING']}},
- 'device_name': 'WC kancly Jih',
+ 'device_name': 'Office',
  'device_type': 'DUPLEX 570 EC5',
- 'functions': [{'enabled': False, 'id': 4, 'name': 'test RŠ', 'triggerId': []}],
+ 'functions': [{'enabled': False, 'id': 4, 'name': 'test RS', 'triggerId': []}],
  'production_number': '355183014',
  'requests': ['work_regime', 'fan_power_req', 'temp_request'],
  'scenes': [{'author': 'admin',

@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "amotion_kare_cavojsky"
-version = "0.1.4"
+name = "amotion"
+version = "0.1.8"
 authors = [
   { name="Karel Cavojsky", email="karel@cavojsky.cz" },
 ]
@@ -18,10 +18,9 @@ classifiers = [
 ]
 
 dependencies = [
-  "aiohttp>=3.8.5",
-  "json>=3.9.1"
+  "aiohttp>=3.8.5"
 ]
 
 [project.urls]
-Homepage = "https://github.com/pypa/sampleproject"
-Issues = "https://github.com/pypa/sampleproject/issues"
+Homepage = "https://github.com/karelcavojsky/python-amotion"
+Issues = "https://github.com/karelcavojsky/python-amotion/issues"
