@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "amotion_kare_cavojsky"
+version = "0.1.4"
+authors = [
+  { name="Karel Cavojsky", email="karel@cavojsky.cz" },
+]
+description = "Adapter for managing the connection, control and monitoring of the HVAC aMotion family family"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+  "aiohttp>=3.8.5",
+  "json>=3.9.1"
+]
+
+[project.urls]
+Homepage = "https://github.com/pypa/sampleproject"
+Issues = "https://github.com/pypa/sampleproject/issues"
