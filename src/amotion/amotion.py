@@ -30,34 +30,34 @@ class aMotionConnectorEndpoints:
 
         self._host = host
 
-    def __uri(self, ep):  # noqa: D102
+    def uri(self, ep):  # noqa: D102
         return f"{self._host}/{ep}"
 
-    def __login(self):  # noqa: D102
+    def login(self):  # noqa: D102
         return self.uri("api/login")
 
-    def __ui_control_scheme(self):  # noqa: D102
+    def ui_control_scheme(self):  # noqa: D102
         return self.uri("api/ui_control_scheme")
 
-    def __get_scenes(self):  # noqa: D102
+    def get_scenes(self):  # noqa: D102
         return self.uri("api/control_admin/config/get_scenes")
 
-    def __get_triggers_fce(self):  # noqa: D102
+    def get_triggers_fce(self):  # noqa: D102
         return self.uri("api/control_admin/config/get_trigger_functions")
 
-    def __get_ui_info(self):  # noqa: D102
+    def get_ui_info(self):  # noqa: D102
         return self.uri("api/ui_info")
 
-    def __get_discovery(self):  # noqa: D102
+    def get_discovery(self):  # noqa: D102
         return self.uri("api/discovery")
 
-    def __get_control(self):  # noqa: D102
+    def get_control(self):  # noqa: D102
         return self.uri("api/control") 
 
-    def __get_scene_activate(self):  # noqa: D102
+    def get_scene_activate(self):  # noqa: D102
         return self.uri("api/control_admin/config/activate_scene")
     
-    def __get_fce_enable(self):  # noqa: D102
+    def get_fce_enable(self):  # noqa: D102
         return self.uri("api/control_admin/config/enable_trigger_function") 
 
 class aMotionConnector:
@@ -126,7 +126,7 @@ class aMotionConnector:
             return True
         session_timeout = aiohttp.ClientTimeout(total=None, sock_connect=5, sock_read=5)
         self._session = aiohttp.ClientSession(timeout=session_timeout)
-        url = aMotionConnectorEndpoints(self._host).__login()
+        url = aMotionConnectorEndpoints(self._host).login()
         data = {"username": self._username, "password": self._password}
         r = await self._session.post(url, data=json.dumps(data), headers=self.headers)
         self.__disconnect_check(r.status)
@@ -140,7 +140,7 @@ class aMotionConnector:
     async def getControlSchema(self):  # noqa: D102
         if not await self.connect():
             pass
-        url = aMotionConnectorEndpoints(self._host).__ui_control_scheme()
+        url = aMotionConnectorEndpoints(self._host).ui_control_scheme()
         r = await self._session.get(url, headers=self.headers)
         self.__disconnect_check(r.status)
         if r.status == 200:
@@ -151,7 +151,7 @@ class aMotionConnector:
     async def getScenes(self):  # noqa: D102
         if not await self.connect():
             pass
-        url = aMotionConnectorEndpoints(self._host).__get_scenes()
+        url = aMotionConnectorEndpoints(self._host).get_scenes()
         r = await self._session.get(url, headers=self.headers)
         self.__disconnect_check(r.status)
         if r.status == 200:
@@ -162,7 +162,7 @@ class aMotionConnector:
     async def getTriggerFunctions(self):  # noqa: D102
         if not await self.connect():
             pass
-        url = aMotionConnectorEndpoints(self._host).__get_triggers_fce()
+        url = aMotionConnectorEndpoints(self._host).get_triggers_fce()
         r = await self._session.get(url, headers=self.headers)
         self.__disconnect_check(r.status)
         if r.status == 200:
@@ -173,7 +173,7 @@ class aMotionConnector:
     async def getUiInfo(self):  # noqa: D102
         if not await self.connect():
             pass
-        url = aMotionConnectorEndpoints(self._host).__get_ui_info()
+        url = aMotionConnectorEndpoints(self._host).get_ui_info()
         r = await self._session.get(url, headers=self.headers)
         self.__disconnect_check(r.status)
         if r.status == 200:
@@ -184,7 +184,7 @@ class aMotionConnector:
     async def getDiscovery(self):  # noqa: D102
         if not await self.connect():
             pass
-        url = aMotionConnectorEndpoints(self._host).__get_discovery()
+        url = aMotionConnectorEndpoints(self._host).get_discovery()
         r = await self._session.get(url, headers=self.headers)
         self.__disconnect_check(r.status)
         if r.status == 200:
@@ -238,7 +238,7 @@ class aMotionConnector:
         if not await self.connect():
             return False
         data = {"variables": {variable: value}}
-        url = aMotionConnectorEndpoints(self._host).__get_control()
+        url = aMotionConnectorEndpoints(self._host).get_control()
         r = await self._session.post(url, data=json.dumps(data), headers=self.headers)
         self.__disconnect_check(r.status)
         if r.status == 200:
@@ -250,7 +250,7 @@ class aMotionConnector:
         if not await self.connect():
             return False
         data = {"sceneId": id}
-        url = aMotionConnectorEndpoints(self._host).__get_scene_activate()
+        url = aMotionConnectorEndpoints(self._host).get_scene_activate()
         r = await self._session.post(url, data=json.dumps(data), headers=self.headers)
         self.__disconnect_check(r.status)
         if r.status == 200:
@@ -262,7 +262,7 @@ class aMotionConnector:
         if not await self.connect():
             return False
         data = {"id": id, "enabled": state}
-        url = aMotionConnectorEndpoints(self._host).__get_fce_enable()
+        url = aMotionConnectorEndpoints(self._host).get_fce_enable()
         r = await self._session.post(url, data=json.dumps(data), headers=self.headers)
         self.__disconnect_check(r.status)
         if r.status == 200:
